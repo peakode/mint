@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pB8-Rs-NOY">
@@ -50,11 +50,12 @@
                         <rect key="frame" x="24" y="30" width="2" height="50"/>
                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="2" id="Hm0-i6-l8N"/>
                             <constraint firstAttribute="width" constant="2" id="ilm-Bf-9UN"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6t-hR-isB">
-                        <rect key="frame" x="24" y="0.0" width="2" height="20"/>
+                        <rect key="frame" x="24" y="0.0" width="2" height="30"/>
                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </subviews>
@@ -65,14 +66,14 @@
                     <constraint firstItem="iPv-o2-F00" firstAttribute="leading" secondItem="pB8-Rs-NOY" secondAttribute="leading" id="LtX-eF-R7s"/>
                     <constraint firstItem="UnV-6J-K7z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="Npz-8z-mA9"/>
                     <constraint firstItem="KCZ-Wo-l17" firstAttribute="centerX" secondItem="UnV-6J-K7z" secondAttribute="centerX" id="Wtv-3z-pRf"/>
+                    <constraint firstItem="KCZ-Wo-l17" firstAttribute="top" secondItem="L6t-hR-isB" secondAttribute="bottom" id="XuK-fi-okE"/>
                     <constraint firstItem="UnV-6J-K7z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="bSO-dM-f6X"/>
                     <constraint firstItem="L6t-hR-isB" firstAttribute="trailing" secondItem="KCZ-Wo-l17" secondAttribute="trailing" id="d76-5j-te2"/>
                     <constraint firstItem="iPv-o2-F00" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="dSH-oV-DJX"/>
                     <constraint firstAttribute="bottomMargin" secondItem="iPv-o2-F00" secondAttribute="bottom" constant="7.5" id="exk-8d-gxM"/>
-                    <constraint firstItem="KCZ-Wo-l17" firstAttribute="top" secondItem="UnV-6J-K7z" secondAttribute="bottom" id="hJ0-jy-mYL"/>
+                    <constraint firstItem="L6t-hR-isB" firstAttribute="bottom" secondItem="UnV-6J-K7z" secondAttribute="bottom" id="gdg-Li-sKV"/>
                     <constraint firstItem="pB8-Rs-NOY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="iBb-qd-3W3"/>
                     <constraint firstItem="iPv-o2-F00" firstAttribute="top" secondItem="pB8-Rs-NOY" secondAttribute="bottom" constant="8" id="iGi-qc-TiH"/>
-                    <constraint firstItem="UnV-6J-K7z" firstAttribute="top" secondItem="L6t-hR-isB" secondAttribute="bottom" id="iRq-qR-xMR"/>
                     <constraint firstItem="pB8-Rs-NOY" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="oSx-I2-i2y"/>
                     <constraint firstItem="L6t-hR-isB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uP4-ga-MFr"/>
                 </constraints>

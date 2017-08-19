@@ -8,18 +8,20 @@
 
 import UIKit
 import UserNotifications
+import Alamofire
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-
+    var homeVC: ViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        let homeVC = ViewController(nibName: "ViewController", bundle: nil)
-        let navigationController = UINavigationController(rootViewController: homeVC)
+        homeVC = ViewController(nibName: "ViewController", bundle: nil)
+        let navigationController = UINavigationController(rootViewController: homeVC!)
 
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
@@ -56,6 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("User Info = ",response.notification.request.content.userInfo)
+        
+        homeVC?.reloadRecords()
+
         completionHandler()
     }
     
@@ -68,14 +73,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             token += String(format: "%02.2hhx", arguments: [chars[i]])
         }
         
+        postDeviceToken(token: token)
+        
         print("Device Token = ", token)
     }
-    
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error)
-    {
-        print("Error = ",error.localizedDescription)
-    }
 
+    func postDeviceToken(token: String) {
+        
+        let url = "http://35.156.231.100/v1/mint/check"
+        
+        let params = ["DeviceToken":token,
+                      "Developer":"0",
+                      "DeviceType":"2"]
+        
+        print("PARAMS: \(params)")
+        
+        Alamofire.request(url, method: .post, headers: params).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("check result: \(json)")
+                
+            case .failure(let error):
+                print("ERROR: \(error.localizedDescription)")
+            }
+        }
+        
+    }
+    
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
