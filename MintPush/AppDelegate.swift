@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let url = "http://35.156.231.100/v1/mint/check"
         
         let params = ["DeviceToken":token,
-                      "Developer":"0",
+                      "Developer":"1",
                       "DeviceType":"2"]
         
         print("PARAMS: \(params)")
